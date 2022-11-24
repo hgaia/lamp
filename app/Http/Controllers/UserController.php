@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,14 +16,15 @@ class UserController extends Controller
    
     public function create(Request $request)
     {
-        $name = $request->input('name');
-        $email = $request->input('email');
+        $name =     $request->input('name');
+        $email =    $request->input('email');
         $password = $request->input('password');
+        $passwordCrypto = Hash::make($password);
 
         $newUser = User::create([
         'name'       =>     $name,
         'email'      =>     $email,
-        'password'   =>     $password,
+        'password'   =>     $passwordCrypto,
         ]);
 
         return $newUser;

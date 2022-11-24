@@ -26,6 +26,8 @@ Route::prefix('inventary')->group(function () {
     Route::post('create', [InventaryController::class, 'create']);
     Route::post('update/{id}', [InventaryController::class, 'update']);
     Route::get('delete/{id}', [InventaryController::class, 'delete']);
+    Route::get('getLog', [InventaryController::class, 'getLog']);
+    Route::get('search', [InventaryController::class, 'search']);
 });
 
 Route::prefix('user')->group(function () {
