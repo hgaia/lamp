@@ -15,7 +15,8 @@ services:
     ports:
       - '1010:80'
   api: 
-    build: .    
-    command: php artisan serve --port=80
+    build:
+        context: .   
+    command: "php artisan serve"
     ports:
-      - 105:80
+      - 105:8000

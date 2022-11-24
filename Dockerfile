@@ -71,7 +71,7 @@ RUN  apt update && apt upgrade -y
 RUN  apt update && apt install -y nodejs && apt install npm -y
 
 RUN  npm cache clean -f && npm install -g n && n stable
-EXPOSE 8000
+
 COPY . /var/www/html
 WORKDIR /var/www/html
 
