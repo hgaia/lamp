@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  banco:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: tiger
+      MYSQL_DATABASE: data
+    ports:
+      - 1112:3306
+  phpmysql:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: banco
+      PMA_PORT: 3306
+    ports:
+      - '1010:80'
+  api: 
+    build: .
+    ports:
+      - 105:80
+    command: php artisan serve --port=80
