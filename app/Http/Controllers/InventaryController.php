@@ -83,25 +83,40 @@ class InventaryController extends Controller
         $getLog = equipmentLog::all();
         return $getLog;
     }
-    public function search2(Request $request){
-            $name = $request->input('name');
-            $users = User::where('name',$name)->get();
-            
-            foreach($users  as $user ){
-                $id = $user->id;
-                $equipment = inventary::where('user_id',$id)->get();
-                dd($equipment);
-            }
+    public function search(Request $request){
+
+        $name = $request->input('name');
+
+        $user = User::where('name',$name)->first();
+        $idUser = $user->id;
+        $equipmentUser = inventary::where('user_id',$idUser)->get();
+        
+        return $equipmentUser;
+
+        //$equipments = inventary::all();    
+        //
+
+        //foreach($equipments as $equipment){
+        //   
+        //    $idUser = $equipment->user_id;
+        //
+        //    $userFind = User::find($idUser);
+        //    $name = $userFind->name;
+
+        //    $equipment['userName'] = $name;
+        //}
+        //return $equipments;
+        
     }
-    public function search(){
+    public function search2(){
        $user = User::find(1);
        $user_all = User::all();
        $listaUsuarios = User::where('id','>',1)->get();
        $primeiroUsuario = User::where('id','>',1)->first();
-       $Usuario2 = User::where('id','>',1)->where('id','<',3)->get();
-       $Usuario = User::where('id','>',1)->whereOr('id','<',3)->get();
-        return $Usuario;
-        dd($user);
+       $usuario2 = User::where('id','>',1)->where('id','<',3)->get();
+       $usuario = User::where('id','>',1)->whereOr('id','<',3)->get();
+        
+       return $usuario;
 
     }
 }

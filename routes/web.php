@@ -20,4 +20,5 @@ Route::prefix('todolist')->group(function () {
     Route::post('/', [TodolistController::class, 'create'])->name('create');
     Route::delete('/{todolist:id}', [TodolistController::class, 'destroy'])->name('destroy');
     Route::post('/{todolist:id}', [TodolistController::class, 'update'])->name('update');
+    Route::get('/todolistopen', [TodolistController::class, 'open'])->name('open');
 });

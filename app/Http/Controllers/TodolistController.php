@@ -29,7 +29,9 @@ class TodolistController extends Controller
     }
     public function update(Todolist $todolist)
     {
-        $todolist->delete();
+        
+        $todolist->is_complete = true;
+        $todolist->save();
         return back();
     }
 }
